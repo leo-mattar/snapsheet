@@ -16,6 +16,14 @@ import headerMobile from "./global/headerMobile";
 import headerScrolled from "./global/headerScrolled";
 import headerCtaVisibility from "./global/headerCtaVisibility";
 import duplexScrollable from "./components/duplexScrollable";
+import resourcesQuoteSlider from "./components/resourcesQuoteSlider";
+import aboutHeroPanel from "./components/aboutHeroPanel";
+import featuredPartnerSlider from "./components/featuredPartnerSlider";
+import partnersFilterSystem from "./components/partnersFilterSystem";
+import integrationsPage from "./pages/integrationsPage";
+import resourcesHubSlider from "./components/resourcesHubSlider";
+import blogPage from "./pages/blogPage";
+import blogHeroSlider from "./components/blogHeroSlider";
 
 // --- GSAP
 // gsap.registerPlugin(ScrollTrigger, Flip, CustomEase, SplitText);
@@ -44,6 +52,14 @@ function init() {
   footerMobile();
   headerDropdown();
   headerScrolled();
+  resourcesQuoteSlider();
+  aboutHeroPanel();
+  featuredPartnerSlider();
+  partnersFilterSystem();
+  integrationsPage();
+  resourcesHubSlider();
+  blogPage();
+  blogHeroSlider();
 }
 
 init();

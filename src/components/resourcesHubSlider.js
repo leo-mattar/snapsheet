@@ -1,5 +1,5 @@
-export default function resourcesSlider() {
-  const sliderEl = document.querySelector(".swiper.re");
+export default function resourcesHubSlider() {
+  const sliderEl = document.querySelector(".swiper.re-hub");
   if (!sliderEl) return;
 
   const sliderMain = new Swiper(sliderEl, {
@@ -8,8 +8,8 @@ export default function resourcesSlider() {
     speed: 600,
     grabCursor: true,
     navigation: {
-      prevEl: "#re-prev",
-      nextEl: "#re-next",
+      prevEl: "#re-hub-prev",
+      nextEl: "#re-hub-next",
     },
   });
 }
