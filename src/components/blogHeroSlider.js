@@ -3,13 +3,26 @@ export default function blogHeroSlider() {
   if (!sliderEl) return;
 
   const sliderMain = new Swiper(sliderEl, {
-    slidesPerView: "auto",
     spaceBetween: 0,
     speed: 600,
     grabCursor: true,
     navigation: {
       prevEl: "#blog-featured-prev",
       nextEl: "#blog-featured-next",
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1.15,
+      },
+      480: {
+        slidesPerView: 2.15,
+      },
+      768: {
+        slidesPerView: 2.8,
+      },
+      992: {
+        slidesPerView: "auto",
+      },
     },
   });
 }

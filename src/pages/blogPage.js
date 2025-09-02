@@ -2,6 +2,13 @@ export default function blogPage() {
   const page = document.querySelector("[data-page='blog']");
   if (!page) return;
 
+  // ALL BUTTON PLACEMENT
+  const allButton = document.querySelector("[data-blog-all-btn]");
+  const filterList = document.querySelector("[data-blog-filters-list]");
+
+  filterList.prepend(allButton);
+
+  // PAGINATION SCROLL
   function paginationScrollTo() {
     const paginationBtns = document.querySelectorAll(".c-pagination-page-btn");
     const blogSection = document.querySelector("[data-blog-content-section]");
@@ -24,7 +31,6 @@ export default function blogPage() {
       listInstances[0].addHook("afterRender", items => {
         setTimeout(() => {
           paginationScrollTo();
-          console.log("pagination");
         }, 100);
       });
     },

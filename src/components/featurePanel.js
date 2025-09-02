@@ -4,7 +4,7 @@ export default function featurePanel() {
 
   const navLinks = featurePanel.querySelectorAll(".c-panel-nav-link");
   const panelItems = featurePanel.querySelectorAll(".c-panel-item");
-  if (!navLinks.length || !panelItems.length) return;
+  if (!panelItems.length) return; // Only return if there are no panel items
 
   const duration = 8000;
   let currentPanelIndex = -1;
@@ -99,7 +99,7 @@ export default function featurePanel() {
     const currentPanel = panelItems[currentPanelIndex];
     const newPanel = panelItems[panelIndex];
 
-    navLinks[panelIndex].classList.add("is-active");
+    if (navLinks.length > 0) navLinks[panelIndex].classList.add("is-active");
 
     if (currentPanel) {
       currentPanel.style.transition = "opacity 0.5s";
@@ -120,12 +120,33 @@ export default function featurePanel() {
     switchAccordion(newPanel, 0);
   }
 
-  navLinks.forEach((link, index) => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      switchPanel(index);
+  // Nav click only if links exist
+  if (navLinks.length > 0) {
+    navLinks.forEach((link, index) => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        switchPanel(index);
+      });
     });
-  });
+  }
+
+  // Nav click only if links exist
+  if (navLinks.length > 0) {
+    navLinks.forEach((link, index) => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        switchPanel(index);
+
+        if (window.innerWidth <= 991) {
+          link.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "start",
+          });
+        }
+      });
+    });
+  }
 
   // Accordion toggle click
   panelItems.forEach((panelItem, panelIndex) => {
@@ -259,5 +280,6 @@ export default function featurePanel() {
 
   panelItems.forEach(item => observer.observe(item));
 
-  if (navLinks.length > 0) switchPanel(0);
+  // Start the first panel automatically
+  switchPanel(0);
 }

@@ -11,38 +11,31 @@ export default function partnersFilterSystem() {
       const options = {
         container: "#macy-container",
         trueOrder: false,
-        waitForImages: false,
+        waitForImages: true,
         margin: 20,
         columns: 3,
         breakAt: {
           991: 2,
-          520: 1,
+          520: {
+            columns: 1,
+            margin: 12,
+          },
         },
       };
 
       let macyInstance = Macy(options);
 
-      listInstances[1].addHook("render", items => {
-        // Destroy existing instance to prevent conflicts
-        if (macyInstance) {
-          macyInstance.remove();
-        }
-
-        // Small delay to ensure DOM is updated
-        setTimeout(() => {
-          macyInstance = Macy(options);
-
-          // Force recalculation after initialization
-          setTimeout(() => {
-            macyInstance.recalculate();
-          }, 50);
-        }, 10);
+      listInstances[1].addHook("render", () => {
+        requestAnimationFrame(() => {
+          if (macyInstance) {
+            macyInstance.recalculate(true);
+          }
+        });
       });
 
-      // Optional: Add window resize handler for responsive recalculation
       window.addEventListener("resize", () => {
         if (macyInstance) {
-          macyInstance.recalculate();
+          macyInstance.recalculate(true);
         }
       });
     },

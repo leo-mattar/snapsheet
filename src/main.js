@@ -24,6 +24,11 @@ import integrationsPage from "./pages/integrationsPage";
 import resourcesHubSlider from "./components/resourcesHubSlider";
 import blogPage from "./pages/blogPage";
 import blogHeroSlider from "./components/blogHeroSlider";
+import teamModal from "./components/teamModal";
+import careersSlider from "./components/careersSlider";
+import footerLogoLight from "./global/footerLogoLight";
+import resourcesHubSolutions from "./components/resourcesHubSolutions";
+import returnToTop from "./global/returnToTop";
 
 // --- GSAP
 // gsap.registerPlugin(ScrollTrigger, Flip, CustomEase, SplitText);
@@ -60,6 +65,10 @@ function init() {
   resourcesHubSlider();
   blogPage();
   blogHeroSlider();
+  teamModal();
+  careersSlider();
+  resourcesHubSolutions();
+  returnToTop();
 }
 
 init();
@@ -68,6 +77,7 @@ init();
 mm.add("(min-width: 992px)", () => {
   headerCtaVisibility();
   duplexScrollable();
+  footerLogoLight();
   return () => {
     //
   };
