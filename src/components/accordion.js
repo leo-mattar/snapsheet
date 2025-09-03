@@ -16,6 +16,10 @@ export default function accordionScript() {
       items[0].setAttribute("data-accordion-item", "open");
     }
 
+    const section = list.closest("[data-accordion-section]");
+    const alwaysOpen =
+      section && section.hasAttribute("data-accordion-always-open");
+
     list.addEventListener("click", e => {
       const toggle = e.target.closest("[data-accordion-toggle]");
       if (!toggle || !list.contains(toggle)) return;
@@ -27,8 +31,19 @@ export default function accordionScript() {
       if (!item) return;
 
       const wasOpen = isOpen(item);
-      closeAll(items);
-      if (!wasOpen) item.setAttribute("data-accordion-item", "open");
+
+      if (alwaysOpen) {
+        // If always open, prevent closing the only open item
+        const openItems = items.filter(isOpen);
+        if (wasOpen && openItems.length === 1) return;
+      }
+
+      if (wasOpen) {
+        item.setAttribute("data-accordion-item", "closed");
+      } else {
+        closeAll(items);
+        item.setAttribute("data-accordion-item", "open");
+      }
     });
   });
 }

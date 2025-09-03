@@ -12,6 +12,14 @@ export default function headerCtaVisibility() {
 
     ScrollTrigger.create({
       trigger: element,
+      start: "top+=50 bottom",
+      onEnter: () => {
+        ScrollTrigger.refresh();
+      },
+    });
+
+    ScrollTrigger.create({
+      trigger: element,
       start: "top top",
       end: "bottom top",
       onEnter: () => {
