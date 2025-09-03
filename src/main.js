@@ -29,6 +29,7 @@ import careersSlider from "./components/careersSlider";
 import footerLogoLight from "./global/footerLogoLight";
 import resourcesHubSolutions from "./components/resourcesHubSolutions";
 import returnToTop from "./global/returnToTop";
+import contactPage from "./pages/contactPage";
 
 // --- GSAP
 // gsap.registerPlugin(ScrollTrigger, Flip, CustomEase, SplitText);
@@ -69,6 +70,7 @@ function init() {
   careersSlider();
   resourcesHubSolutions();
   returnToTop();
+  contactPage();
 }
 
 init();

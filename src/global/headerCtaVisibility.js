@@ -7,8 +7,6 @@ export default function headerCtaVisibility() {
 
   if (!header && !headerCta) return;
 
-  gsap.registerPlugin(ScrollTrigger);
-
   elements.forEach(element => {
     if (!element) return;
 
