@@ -30,6 +30,7 @@ import footerLogoLight from "./global/footerLogoLight";
 import resourcesHubSolutions from "./components/resourcesHubSolutions";
 import returnToTop from "./global/returnToTop";
 import contactPage from "./pages/contactPage";
+import loader from "./global/loader";
 
 // --- GSAP
 // gsap.registerPlugin(ScrollTrigger, Flip, CustomEase, SplitText);
@@ -71,6 +72,7 @@ function init() {
   resourcesHubSolutions();
   returnToTop();
   contactPage();
+  loader();
 }
 
 init();
