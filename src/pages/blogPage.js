@@ -6,7 +6,9 @@ export default function blogPage() {
   const allButton = document.querySelector("[data-blog-all-btn]");
   const filterList = document.querySelector("[data-blog-filters-list]");
 
-  filterList.prepend(allButton);
+  if (allButton && filterList) {
+    filterList.prepend(allButton);
+  }
 
   // PAGINATION SCROLL
   function paginationScrollTo() {
