@@ -31,6 +31,7 @@ import resourcesHubSolutions from "./components/resourcesHubSolutions";
 import returnToTop from "./global/returnToTop";
 import contactPage from "./pages/contactPage";
 import homeHeroScreenshotHover from "./components/homeHeroScreenshotHover";
+import homePage from "./pages/homePage";
 
 // --- GSAP
 // gsap.registerPlugin(ScrollTrigger, Flip, CustomEase, SplitText);
@@ -73,6 +74,7 @@ function init() {
   returnToTop();
   contactPage();
   homeHeroScreenshotHover();
+  homePage();
 }
 
 init();
