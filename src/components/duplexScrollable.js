@@ -2,31 +2,58 @@ export default function duplexScrollable() {
   const section = document.querySelector("[data-section-duplex-scrollable]");
   if (!section) return;
 
-  const items = section.querySelectorAll("[data-item-duplex-scrollable]");
+  const items = section.querySelectorAll(".o-row.duplex");
   if (!items.length) return;
 
-  gsap.set(items[0], { autoAlpha: 1 });
+  const images = section.querySelectorAll(".c-img-contain.duplex");
 
   items.forEach((item, index) => {
-    const isLast = index === items.length - 1;
-    if (index !== 0) gsap.set(item, { autoAlpha: 0 });
+    const image = images[index];
 
     ScrollTrigger.create({
       trigger: item,
-      start: "top center",
-      end: "bottom top",
-      onEnter: () => showItem(item, index),
-      onEnterBack: () => showItem(item, index),
+      start: "top 50%", // activates when the item passes into view
+      end: "bottom top", // deactivates when it leaves
+      onEnter: () => {
+        images.forEach((img, i) => {
+          if (i !== index) img.classList.remove("is-active");
+        });
+        image.classList.add("is-active");
+      },
+      onEnterBack: () => {
+        images.forEach((img, i) => {
+          if (i !== index) img.classList.remove("is-active");
+        });
+        image.classList.add("is-active");
+      },
+      onLeave: () => {
+        image.classList.remove("is-active"); // remove when leaving downwards
+      },
+      onLeaveBack: () => {
+        image.classList.remove("is-active"); // remove when leaving upwards
+      },
     });
   });
 
-  function showItem(item, index) {
-    const isLast = index === items.length - 1;
-    items.forEach((other, i) => {
-      if (other !== item && (!isLast || i !== items.length - 1)) {
-        gsap.to(other, { autoAlpha: 0, duration: 0.6, ease: "power4.inOut" });
+  // Z-index adjustment
+  const duplexSection = document.querySelector(
+    ".c-section[data-section-duplex-scrollable]"
+  );
+
+  if (duplexSection) {
+    const allSections = document.querySelectorAll(".c-section");
+    const sectionsArray = Array.from(allSections);
+    const duplexIndex = sectionsArray.indexOf(duplexSection);
+
+    if (duplexIndex !== -1) {
+      for (let i = 1; i <= 3; i++) {
+        if (duplexIndex - i >= 0) {
+          sectionsArray[duplexIndex - i].style.zIndex = "30";
+        }
+        if (duplexIndex + i < sectionsArray.length) {
+          sectionsArray[duplexIndex + i].style.zIndex = "30";
+        }
       }
-    });
-    gsap.to(item, { autoAlpha: 1, duration: 0.6, ease: "power4.inOut" });
+    }
   }
 }
