@@ -12,7 +12,7 @@ export default function duplexScrollable() {
 
     ScrollTrigger.create({
       trigger: item,
-      start: "top 50%", // activates when the item passes into view
+      start: "top 30%", // activates when the item passes into view
       end: "bottom top", // deactivates when it leaves
       onEnter: () => {
         images.forEach((img, i) => {
