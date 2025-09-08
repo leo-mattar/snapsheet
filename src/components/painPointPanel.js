@@ -5,7 +5,7 @@ export default function painPointPanel() {
   const navLinks = panel.querySelectorAll(".c-panel-nav-link");
   const statsItems = panel.querySelectorAll(".c-b-stats-panel-item");
 
-  if (!navLinks.length || !statsItems.length) return;
+  // if (!navLinks.length || !statsItems.length) return;
 
   // Function to activate a specific index
   function activate(index) {
