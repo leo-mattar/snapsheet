@@ -1,5 +1,7 @@
 export default function headerCtaVisibility() {
-  const elements = document.querySelectorAll("[data-header-cta-visibility]");
+  const elements = document.querySelectorAll(
+    "[data-header-cta-visibility='true']"
+  );
   if (!elements.length) return;
 
   const header = document.querySelector(".c-header");
